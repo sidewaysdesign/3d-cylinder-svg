@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SVG Cylinder Wrapper</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="main.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="app__header">
+        <div>
+          <p class="app__eyebrow">3D Preview</p>
+          <h1>SVG-to-Cylinder Relief Builder</h1>
+          <p class="app__subtitle">
+            Map an SVG around a cylinder, tune scale and offsets, and export the
+            previewed form as an STL.
+          </p>
+        </div>
+        <button id="export" class="button button--primary">Export STL</button>
+      </header>
+
+      <div class="app__content">
+        <section class="panel">
+          <h2>SVG Source</h2>
+          <label class="file-input">
+            <input id="svgInput" type="file" accept="image/svg+xml" />
+            <span>Select SVG file</span>
+          </label>
+          <p class="hint" id="svgName">Using default demo SVG.</p>
+
+          <div class="controls">
+            <h3>Cylinder Dimensions</h3>
+            <div class="control">
+              <label for="height">Height</label>
+              <input id="height" type="range" min="40" max="240" value="140" />
+              <span id="heightValue"></span>
+            </div>
+            <div class="control">
+              <label for="diameter">Diameter</label>
+              <input id="diameter" type="range" min="40" max="200" value="100" />
+              <span id="diameterValue"></span>
+            </div>
+            <div class="control">
+              <label for="thickness">Relief thickness</label>
+              <input id="thickness" type="range" min="0" max="60" value="18" />
+              <span id="thicknessValue"></span>
+            </div>
+          </div>
+
+          <div class="controls">
+            <h3>Texture Positioning</h3>
+            <div class="control">
+              <label for="scale">SVG scale</label>
+              <input id="scale" type="range" min="0.2" max="2" value="1" step="0.05" />
+              <span id="scaleValue"></span>
+            </div>
+            <div class="control">
+              <label for="offsetX">Horizontal offset</label>
+              <input id="offsetX" type="range" min="-1" max="1" value="0" step="0.01" />
+              <span id="offsetXValue"></span>
+            </div>
+            <div class="control">
+              <label for="offsetY">Vertical offset</label>
+              <input id="offsetY" type="range" min="-1" max="1" value="0" step="0.01" />
+              <span id="offsetYValue"></span>
+            </div>
+          </div>
+
+          <div class="controls">
+            <h3>Preview Options</h3>
+            <label class="toggle">
+              <input id="reliefToggle" type="checkbox" checked />
+              <span>Show relief cylinder</span>
+            </label>
+          </div>
+        </section>
+
+        <section class="preview">
+          <canvas id="viewport"></canvas>
+          <div class="preview__legend">
+            <span class="swatch swatch--base"></span> Base cylinder
+            <span class="swatch swatch--relief"></span> Relief offset
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
